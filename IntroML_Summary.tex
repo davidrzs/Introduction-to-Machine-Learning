@@ -1,6 +1,6 @@
-\documentclass[11pt]{scrartcl}
+\documentclass[11pt]{article}
 \usepackage[headings]{fullpage}
-\usepackage[landscape,paper=a4paper,margin=0.25cm]{geometry}
+\usepackage[landscape,paper=a4paper,margin=0.4cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{mathtools}
@@ -9,17 +9,34 @@
 \usepackage{enumerate}
 \usepackage{color}
 \usepackage[dvipsnames]{xcolor}
+\usepackage{eulervm}
+\usepackage{mathpazo}
 
 % Text formatting
 \usepackage{parskip}
-\setlength{\parskip}{4pt} %set space after paragraph
-\usepackage{titlesec}
-\titlespacing*{\section}{0pt}{12pt}{-4pt}
-\titleformat*{\section}{\normalfont\sffamily\bfseries\large\color{LimeGreen}}
-\titlespacing*{\subsection}{0pt}{-2pt}{-6pt}
-\titleformat*{\subsection}{\normalfont\sffamily\bfseries\color{CornflowerBlue}}
+\setlength{\parskip}{2pt} %set space after paragraph
 
-\usepackage[all=tight]{savetrees}
+\usepackage{etoolbox}
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{0pt}{0pt}
+
+\titlespacing*{\subsection}{0pt}{-1pt}{-1pt}
+\titleformat*{\section}{\normalfont\bfseries\large\color{Blue}}
+\titlespacing*{\subsection}{0pt}{0pt}{0pt}
+\titleformat*{\subsection}{\normalfont\large\bfseries\itshape}
+
+\usepackage{mdframed}
+\mdfsetup{
+	innerleftmargin=0cm,innertopmargin=2pt,innerbottommargin=2pt%
+	linecolor=blue,
+	rightline=false,bottomline=true,
+	leftline=false,
+skipbelow=0pt,
+skipabove=0pt}
+
+
+
+\usepackage[all=tight,extreme]{savetrees}
 \usepackage{multicol}
 
 \begin{document}
@@ -27,18 +44,31 @@
 \begin{multicols*}{4}
 
 \input{Basics}
+
 \input{Regression}
+
 \input{Classification}
+
 \input{Kernels}
+
 \input{Imbalance}
+
 \input{MultiClass}
+
 \input{NeuralNetworks}
+
 \input{Clustering}
+
 \input{DimensionReduction}
+
 \input{ProbabilityModeling}
+
 \input{DecisionTheory}
+
 \input{Generative}
+
 \input{Latent}
+
 \input{Math}
 
 \end{multicols*}
