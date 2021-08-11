@@ -34,7 +34,16 @@
 skipbelow=0pt,
 skipabove=0pt}
 
-
+\newcommand{\oneline}[1]{%
+	\newdimen{\namewidth}%
+	\setlength{\namewidth}{\widthof{#1}}%
+	\ifthenelse{\lengthtest{\namewidth < \textwidth}}%
+	{#1}% do nothing if shorter than text width
+	{\resizebox{\textwidth}{!}{#1}}% scale down
+}
+\newcommand*{\pseudosubsection}[1]{\textbf{\textit{#1}}}
+\newcommand*{\argmin}[1]{\operatorname{argmin}_{#1}}
+\newcommand*{\argmax}[1]{\operatorname{argmax}_{#1}}
 
 \usepackage[all=tight,extreme]{savetrees}
 \usepackage{multicol}

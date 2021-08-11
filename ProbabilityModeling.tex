@@ -4,7 +4,12 @@ $R(h) = \int P(x,y)l(y;h(x)) \partial yx \partial y = \mathbb{E}_{x,y}[l(y;h(x))
 
 \subsection*{For least squares regression}
 Best $h$: $h^*(x) = \mathbb{E}[Y|X=x]$ \\
-Pred.: $\hat{y} = \hat{\mathbb{E}}[Y|X=\hat{x}] = \int \hat{P}(y|X=\hat{x}) y \partial y$
+Pred.: $\hat{y} = \hat{\mathbb{E}}[Y|X=\hat{x}] = \int \hat{P}(y|X=\hat{x}) y \partial y$\\
+\pseudosubsection{Equivalence Regularized \& Probabilistic}
+For $C(w) = - \log P(w)$ and $l(w^Tx_i;x_i,y_i) = - \log P(y_i|x_i,w)$ we have 
+\begin{align*}
+	&\argmin{w} \sum_{i=1}^{n} l (w^T x_i; x_i,y_i) + C(w)\\ =& \argmax{w} \prod_{i=1} P(y_i|x_i,w) \cdot P(w) \\=&  \argmax{w} P(w|D)
+\end{align*}
 
 \subsection*{Maximum Likelihood Estimation (MLE)}
 $\theta^* = \underset{\theta}{\operatorname{argmax}} ~ \hat{P}(y_1,...,y_n|x_1,...,x_n,\theta)$\\

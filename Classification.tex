@@ -1,26 +1,21 @@
 \section*{Classification}
 
-Solve $w^* = \underset{w}{\operatorname{argmin}} ~ l(w;x_i,y_i)$; loss function $l$
-
-\subsection*{Loss functions}
-\begin{itemize}
-	\item $l_{0/1} (y,x) = 1 \text{ if } y \neq \operatorname{sign}(w^Tx) \text{ else } 0$
-	\item $l_{\text{hinge}}(z) = \max(0,1-z) $
-	\item $l_{\text{squared}}(z) = (1-z)^2$
-	\item $l_{\text{logistic}}(z) = \log(1+e^{-z})$
-	\item $l_{\text{exp}}(z) = e^{-z}$
-\end{itemize}
-
-\subsection*{Perceptron algorithm}
+Solve $w^* = \underset{w}{\operatorname{argmin}} ~ l(w;x_i,y_i)$\\
+\pseudosubsection{Loss functions}\\
+{- $l_{0/1} \left(y,x\right) = 1$  if $y \neq \operatorname{sign}\left(w^Tx\right)$ else 0}\\
+- $l_{\text{hinge}}(z) = \max\left(0,1-z\right) $ \\
+- $l_{\text{squared}}(z) = (1-z)^2$\hfill\\
+- $l_{\text{logistic}}(z) = \log\left(1+\exp(-z)\right)$ \\
+- $l_{\text{exp}}(z) = e^{-z}$ \\
+\pseudosubsection{Perceptron algorithm}\\
 Use $l_P (w;y_i,x_i) = \operatorname{max}(0, -y_i w^T x_i)$ and SGD\\
 $\nabla_w l_P(w;y_i,x_i) = 
 \begin{cases}
     0 &\text{if } y_i w^T x_i \geq 0\\
     -y_i x_i &\text{otherwise}
 \end{cases}$ \\
-Data lin. separable $\Leftrightarrow$ obtains a lin. separator (not necessarily optimal)
-
-\subsection*{Support Vector Machine (SVM)}
+Data lin. separable $\Leftrightarrow$ obtains a lin. separator (not necessarily optimal)\\
+\pseudosubsection{Support Vector Machine (SVM)}\\
 Hinge loss: $l_H(w;x_i,y_i) = \operatorname{max}(0,1-y_i w^T x_i)$ \\
 $\nabla_w l_H(w;y,x) = 
 \begin{cases}
