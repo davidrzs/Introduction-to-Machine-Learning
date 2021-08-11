@@ -9,6 +9,12 @@ $L(w, \theta) = - \sum_{i=1}^n \operatorname{log}  \sum_{j=1}^k w_j P(x_i| \thet
 Estimate prior $P(y)$; Est. cond. distr. for each class:
 $P(x|y) = \sum_{j=1}^{k_y} w_j^{(y)} \mathcal{N}(x; \mu_j^{(y)}, \Sigma_j^{(y)})$\\
 
+\subsection*{EM Algorithm - Theory}
+E-Step (compute where belongs): $Q(\theta; \theta^{(t-1)}) = \mathbb{E}_{z_{1:n}} \left[\log P (x_{1:n},z_{1:n} \mid \theta  ) \mid x_{1:n},\theta ^{(t-1)} \right] $
+M-Step (find best model params): $\theta^(t) = \operatorname{argmax}_{\theta} Q(\theta; \theta^{(t-1)}) $
+
+
+
 \subsection*{Hard-EM algorithm}
 Initialize parameters $\theta^{(0)}$\\
 E-step: Predict most likely class for each point:
