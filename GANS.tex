@@ -1,0 +1,2 @@
+\section*{GAN's}
+Game: $\min_{w_G} \max_{w_D} \mathbb{E}_{x\sim Data} \log D(x;w_D) + \mathbb{E}_{z\sim \mathcal{N}} \log \left(1- D(G(z;w_G);W_D) \right)$ with opt. $D$ for fix $G$: $D^*_G (x) = \frac{P_{data}(x)}{P_G(x) + P_{data}(x)}$

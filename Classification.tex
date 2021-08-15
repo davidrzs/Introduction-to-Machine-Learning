@@ -1,12 +1,12 @@
 \section*{Classification}
-
-Solve $w^* = \underset{w}{\operatorname{argmin}} ~ l(w;x_i,y_i)$\\
+Solve $w^* = \operatorname{argmin}_w ~ l(w;x_i,y_i)$\\
 \pseudosubsection{Loss functions}\\
 {- $l_{0/1} \left(y,x\right) = 1$  if $y \neq \operatorname{sign}\left(w^Tx\right)$ else 0}\\
 - $l_{\text{hinge}}(z) = \max\left(0,1-z\right) $ \\
 - $l_{\text{squared}}(z) = (1-z)^2$\hfill\\
 - $l_{\text{logistic}}(z) = \log\left(1+\exp(-z)\right)$ \\
 - $l_{\text{exp}}(z) = e^{-z}$ \\
+- $l_{\text{bin-cross}}(y,p) = - y\log(p) + (1-y)\log(1-p)$\\
 \pseudosubsection{Perceptron algorithm}\\
 Use $l_P (w;y_i,x_i) = \operatorname{max}(0, -y_i w^T x_i)$ and SGD\\
 $\nabla_w l_P(w;y_i,x_i) = 

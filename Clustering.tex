@@ -1,6 +1,5 @@
 \section*{Clustering}
-\subsection*{k-mean}
-
+\pseudosubsection{k-mean}
 $\hat{R}(\mu) = \sum_{i=1}^n \underset{j\in\{1,...k\}}{\operatorname{min}}||x_i-\mu_j||_2^2$\\
 $\hat{\mu} =  \underset{\mu}{\operatorname{argmin}} ~ \hat{R}(\mu)$ ...non-convex, NP-hard \\
 Algorithm (Lloyd's heuristic): Choose starting centers, assign points to closest center, update centers to mean of each cluster, repeat
