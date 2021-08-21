@@ -8,13 +8,15 @@ $L(w, \theta) = - \sum_{i=1}^n \operatorname{log}  \sum_{j=1}^k w_j P(x_i| \thet
 Estimate prior $P(y)$; Est. cond. distr. for each class:
 $P(x|y) = \sum_{j=1}^{k_y} w_j^{(y)} \mathcal{N}(x; \mu_j^{(y)}, \Sigma_j^{(y)})$ where $\sum w_i = 1$ and \\
 \pseudosubsection{EM Algorithm - Theory}\\
-E-Step (compute where belongs): $Q(\theta; \theta^{(t-1)}) = \mathbb{E}_{z_{1:n}} \left[\log P (x_{1:n},z_{1:n} \mid \theta  ) \mid x_{1:n},\theta ^{(t-1)} \right] $
-M-Step (find best model params): $\theta^{(t)} = \operatorname{argmax}_{\theta} Q(\theta; \theta^{(t-1)}) $\\
+\textit{E-step} define the conditional expectation of the complete data log likelyhood wrt to the hidden variable $y$.\\
+$Q(\theta|\theta^{(n)}) = \mathbb{E}_{X|y,\theta^{n}} [\log p_\theta(x,y)]$\\
+\textit{M-step} find new $\theta$ maximizing expectation
+$\theta^{(n+1)} = \operatorname{argmax}_{\theta} Q(\theta|\theta^{(n)})$\\
 \pseudosubsection{Hard-EM algorithm}\\
 Initialize parameters $\theta^{(0)}$\\
 E-step: Predict most likely class for each point:
 $z_i^{(t)} = \underset{z}{\operatorname{argmax}} ~ P(z|x_i, \theta^{(t-1)})\\
-= \underset{z}{\operatorname{argmax}} ~ P(z|\theta^{(t-1)}) P(x_i|z,\theta^{(t-1)})$;\\
+= {\operatorname{argmax}_z} ~ P(z|\theta^{(t-1)}) P(x_i|z,\theta^{(t-1)})$;\\
 M-step: Compute the MLE: $\theta^{(t)} = \underset{\theta}{\operatorname{argmax}} \ P(D^{(t)}|\theta)$, i.e. $\mu_j^{(t)} = \frac{1}{n_j} \sum_{i: z_i = j} x_i$\\
 \pseudosubsection{Soft-EM algorithm}\\
 E-step: Calc p for each point and cls.: $\gamma_j^{(t)}(x_i)$\\
@@ -30,10 +32,3 @@ unlabeled:\\ $\gamma_j^{(t)}(x_i) = P(Z=j|x_i, \mu^{(t-1)}, \Sigma^{(t-1)}, w^{(
 
 \subsection*{E-step: Posterior probabilities}
 $\gamma_j^t(x_i) = P(Z=j|x_i, \theta_t) = \frac{P(x_i|Z=j, \theta_t) P(Z=j|\theta_t)}{P(x_i;\theta_t)}$
-
-\subsection*{M-step: maximizing expected log likelihood}
-$\mathbb{E}_{\gamma^t}[\log P(\mathcal{D;\theta})] = 
-\mathbb{E}_{\gamma^t}[\log \Pi_{i=1}^nP(x_i,z_i;\theta)] = $ \\
-$\sum_{i=1}^n \mathbb{E}_{\gamma^t}[\log P(x_i,z_i;\theta)] = $ \\
-$\sum_{i=1}^n \sum_{j=1}^k \gamma_j^t(x_i) \log (P(x_i|z_i=j;\theta) P(z_i=j;\theta))$ \\
-$\theta_{t+1} = \underset{\theta}{\operatorname{argmax}} \mathbb{E}_{\gamma^t}[\log P(\mathcal{D;\theta})]$

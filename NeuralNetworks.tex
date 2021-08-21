@@ -4,7 +4,7 @@ $\Rightarrow w^* = \underset{w, \theta}{\operatorname{argmin}} \sum_{i=1}^n l(y_
 $f(x; w, \theta_{1:d}) = \sum_{j=1}^m w_j \varphi(\theta_j^T x) = w^T \varphi(\Theta x)$\\
 \pseudosubsection{Activation functions}\\
 Sigmoid: $\frac{1}{1+exp(-z)}$,  $\varphi'(z) = (1 - \varphi(z))\cdot\varphi(z)$\\
-tanh: $\varphi(z) = tanh(z) = \frac{exp(z)-exp(-z)}{exp(z)+exp(-z)}$\\
+tanh: $\varphi(z) = tanh(z) = \frac{e^z-e^{-z}}{e^z+e^{-z}}$; $\varphi' = 1 - \varphi ^2$ \\
 ReLU:  $\varphi(z) = \max(z,0)$\\
 \pseudosubsection{Predict: forward propagation}
 $v^{(0)} = x$; for $l = 1,...,L-1$: \\
@@ -14,7 +14,7 @@ Predict $f$ for regression, $\operatorname{sign}(f)$ for class.\\
 \pseudosubsection{Compute gradient: backpropagation}
 Output layer: 
 $\delta_j = l_j'(f_j)$,
-$\frac{\partial}{\partial w_{j,i}} = \delta_j v_i$\\
+$\frac{\partial L(?)}{\partial w_{j,i}} = \delta_j v_i$\\
 Hidden layer $l=L-1,...,1$:\\
 $\delta_j = \varphi'(z_j) \cdot \sum_{i\in Layer_{l+1}} w_{i,j}\delta_i$,
 $\frac{\partial}{\partial w_{j,i}} = \delta_j v_i$\\

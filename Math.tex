@@ -20,6 +20,7 @@ E.g. $\nabla_w \operatorname{log}(1+\operatorname{exp(-y w^T x)}) = \\
 \pseudosubsection{Convex / Jensen's inequality}
 $\text{g(x) convex} \Leftrightarrow g''(x) > 0 \Leftrightarrow x_1,x_2 \in \mathbb{R}, \lambda \in [0,1]: 
 g(\lambda x_1 + (1-\lambda) x_2) \leq \lambda g(x_1) + (1-\lambda) g(x_2)$\\
+$\mathbb{E}[\log(X)] \leq \log \mathbb{E}(X)$\\
 \pseudosubsection{Gaussian / Normal Distribution}
 $f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} exp(-\frac{(x-\mu)^2}{2\sigma^2})$ and $\frac{X-\mu}{\sigma} \sim \mathcal{N}(0,1)$ and $\Phi(-x) = 1 - \Phi(x)$ and ${\Phi^{-1}(x) = -\Phi^{-1}(1-x)}$. For $X\sim N(\mu_X,\sigma^2_X)$, $Y \sim N(\mu_Y, \sigma^2_Y)$ with $Z=X+Y$ yields $Z \sim N(\mu_X+\mu_Y, \sigma^2_X + \sigma^2_Y)$.\\
 \pseudosubsection{Multivariate Gaussian}

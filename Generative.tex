@@ -1,13 +1,9 @@
 \section*{Discriminative / generative modeling}
 Discr. estimate $P(y|x)$, generative $P(y,x)$ \\
-Approach (generative): $P(x,y) = P(x|y) \cdot P(y)$
-- Estimate prior on labels $P(y)$\\
-- Estimate cond. distr. $P(x|y)$ for each class $y$\\
-- Pred. using Bayes:
-$P(y|x) = \frac{P(y) P(x|y)}{P(x)}$\\
-$P(x) = \sum_y P(x,y)$\\
-%\subsection*{Example: Naive Bayes Model}
-%cond. ind.:$P(X_1,...,X_d|Y) = \prod_{i=1}^d P(X_i|Y)$
+\pseudosubsection{Generative}
+\textit{Model} $p(y)$, \textit{Model} $p(\vec{x}|y)$, \textit{Calculate} $p(y|\vec{x}) = \frac{p(\vec{x}|y) p(y)}{\sum_y p(\vec{x}|y) p(y)}$\\
+\pseudosubsection{Naive Bay. Assumpt.}
+$p(\vec{x}|y) = \prod_{i=1}^N p(x_i|y)$\\
 \pseudosubsection{Examples}
 MLE for $P(y) = p = \frac{n_+}{n}$\\
 MLE for $P(x_i|y) = \mathcal{N}(x_i;\mu_{i,y}, \sigma_{i,y}^2)$:\\
@@ -18,8 +14,8 @@ $\mathbb{R}^d$: $P(X = x|Y = y) = \prod_{i=1}^dPois(\lambda_y^{(i)},x^{(i)})$\\
 \pseudosubsection{Deriving decision rule}\\
 %In order to predict label y for new point x, use\\
 $P(y|x) = \frac{1}{Z} P(y)P(x|y)$, $Z = \sum_y P(y) P(x|y)$\\
-$y^* = \underset{y}{\operatorname{amax}} ~ P(y|x) = 
-\underset{y}{\operatorname{amax}} ~ P(y) \prod_{i=1}^d P(x_i|y)$\\
+$y^* = {\operatorname{amax}_y} ~ P(y|x) = 
+{\operatorname{amax}_y} ~ P(y) \prod_{i=1}^d P(x_i|y)$\\
 \pseudosubsection{Gaussian Bayes Classifier}
 $\hat{P}(x|y) = \mathcal{N}(x ; \hat{\mu}_y, \hat{\Sigma}_y)$\\
 $\hat{P}(Y=y) = \hat{p}_y = \frac{n_y}{n}$\\
@@ -31,4 +27,14 @@ $P(x) \leq \tau$\\
 MLE for feature distr.:
 $\hat{P}(X_i = c|Y = y) = \theta_{c|y}^{(i)}\\
 \theta_{c|y}^{(i)} = \frac{Count(X_i = c, Y = y)}{Count(Y=y)}$\\
-Prediction: $y^* = \underset{y}{argmax}\hat{P}(y|x)$
+Prediction: $y^* = {argmax}_y\hat{P}(y|x)$\\
+\pseudosubsection{Fish lin. disc. anal. (LDA, c=2)}
+Ass.: $p = 0.5$; $\hat{\Sigma}_- = \hat{\Sigma}_+ = \hat{\Sigma}$\\
+discriminant func:
+$f(x) = \operatorname{log} \frac{p}{1-p} + \\
+\frac{1}{2}[\operatorname{log} \frac{|\hat{\Sigma}_-|}{|\hat{\Sigma}_+|}
++ \left((x - \hat{\mu}_-)^T \hat{\Sigma}_-^{-1} (x - \hat{\mu}_-)\right) - \\
+\left((x - \hat{\mu}_+)^T \hat{\Sigma}_+^{-1} (x - \hat{\mu}_+)\right)]$\\
+Predict: $y = \operatorname{sign}(f(x)) = \operatorname{sign} (w^T x + w_0)$\\
+$w = \hat{\Sigma}^{-1}(\hat{\mu}_+ - \hat{\mu}_-)$; \\
+$w_0 = \frac{1}{2}(\hat{\mu}_-^T\hat{\Sigma}^{-1}\hat{\mu}_- - \hat{\mu}_+^T \hat{\Sigma}^{-1}\hat{\mu}_+)$

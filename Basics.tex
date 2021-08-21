@@ -25,8 +25,10 @@ e.g. k-NN
 \\
 \pseudosubsection{Gradient Descent}
 1. Pick arbitrary $w_0 \in \mathbb{R}^d$\\
-2. $w_{t+1} = w_t - \eta_t \nabla \hat{R}(w_t)$
+2. $w_{t+1} = w_t - \eta_t \nabla \hat{R}(w_t)$\\
+Convergence if $\eta < 2/\lambda_{max}$ eig val of Hess.
 \\
 \pseudosubsection{Stochastic Gradient Descent (SGD)}
 1. Pick arbitrary $w_0 \in \mathbb{R}^d$\\
-2. $w_{t+1} = w_t - \eta_t \nabla_w l(w_t;x',y')$, with u.a.r.\\ data point $(x',y') \in D$
+2. $w_{t+1} = w_t - \eta_t \nabla_w l(w_t;x',y')$, with u.a.r.\\ data point $(x',y') \in D$\\
+Convergence if $\sum \eta_t = \propto$ and $\sum \eta_t ^2 < \propto$
